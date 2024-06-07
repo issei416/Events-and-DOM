@@ -19,7 +19,6 @@ clickme_btn.addEventListener('click',() => {
 let h1 = document.querySelector('#header1');
 let pos  = document.getElementById("pos");
 h1.addEventListener('mousemove',({clientX,clientY}) => {
-    console.log("event triggered",clientX,clientY);
     pos.innerText = `X:${clientX} , Y:${clientY}`;
 })
 
@@ -27,7 +26,6 @@ let textarea = document.querySelector('#textarea');
 
 
 textarea.addEventListener("keydown", () => {
-    console.log("event occurs");
     let string = textarea.value;
     let count = document.querySelector('#count');
     count.innerText = string.length;
@@ -107,6 +105,11 @@ function d2h(d) {
     }
 }
 
+function b2h(s) {
+    let res = b2d(s);
+    return d2h(res);
+}
+
 function h2d(h) {
     let res = '';
     let input_array = h.split("");
@@ -150,10 +153,17 @@ hexa.addEventListener('focus',() => {
     decimal.value = '';
 })
 
+binary.addEventListener('focus',() => {
+    hexa.value = '';
+    decimal.value = '';
+})
+
 convert_btn.addEventListener('click',()=>{
     if (binary.value) {
         let decimal_value = b2d(binary.value);
+        let hexa_value = b2h(binary.value)
         decimal.value = decimal_value;
+        hexa.value = hexa_value;
     }
     else if(decimal.value){
         let binary_value = d2b(decimal.value);
