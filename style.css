@@ -1,0 +1,9 @@
+.text-area {
+    height:250px;
+    overflow: auto;
+}
+
+.badge {
+    top:-20%;
+    left:95%;
+}
